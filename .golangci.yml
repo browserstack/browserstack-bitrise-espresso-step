@@ -1,0 +1,42 @@
+# .golangci.yml
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+  goconst:
+    min-len: 2
+    min-occurrences: 3
+  govet:
+    check-shadowing: true
+  nolintlint:
+    require-explanation: true
+    require-specific: true
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - exportloopref
+    - exhaustive
+    - goconst
+    - gofmt
+    - goimports
+    - gocyclo
+    - govet
+    - ineffassign
+    - misspell
+    - nolintlint
+    - nakedret
+    - prealloc
+    - predeclared
+    - structcheck
+    - thelper
+    - typecheck
+    - varcheck
+    - whitespace
+    - wsl
+
+run:
+  issues-exit-code: 1
