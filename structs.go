@@ -1,9 +1,9 @@
 package main
 
 type TestMapping struct {
-	Name     string   `json:"name,omitempty"`
-	Strategy string   `json:"strategy,omitempty"`
-	Values   []string `json:"values,omitempty"`
+	Name     string      `json:"name,omitempty"`
+	Strategy string      `json:"strategy,omitempty"`
+	Values   interface{} `json:"values,omitempty"`
 }
 
 type TestSharding struct {
