@@ -1,23 +1,22 @@
 # BrowserStack App Automate - Espresso
-​
+
 Run Espresso tests on BrowserStack
-​
+
 <details>
 <summary>Description</summary>
-​
-Run your Espresso tests on BrowserStack App Automate. This step collects the built `.apk` file from `$BITRISE_APK_PATH` and test suite `.apk` file from `$BITRISE_TEST_APK_PATH` environment variables.
+
+Run your Espresso tests on BrowserStack App Automate. This step collects the built APK from `$BITRISE_APK_PATH` and test apk from `$BITRISE_TEST_APK_PATH` environment variables.
 
 ## Configure the Step
-​
-Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) on your machine.
+
+Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) in your machine.
 
 Complete the following steps:
 
-​1. Clone the repository:
+1. Clone the repository:
   ```bash
   git clone https://github.com/browserstack/browserstack-bitrise-espresso-step.git
   ```
-
 2. Open the cloned repository and create a `.bitrise.secrets.yml` file at the same level of bitrise.yml to add your BrowserStack Username and Access Key.
   An example `.bitrise.secrets.yml` file is as follows:
   ```yml
@@ -25,46 +24,37 @@ Complete the following steps:
       - A_SECRET_PARAM_ONE: the value for secret one
       - A_SECRET_PARAM_TWO: the value for secret two
   ```
-
 3. Go to the cloned repository and start the workflow editor:
   ```bash
   cd browserstack-bitrise-espresso-step
   bitrise :workflow-editor
   ```
-  The workflow editor starts on `http://localhost:50154/1.3.87/#!/workflows`.
-
-4. On the workflow editor page, from the `WORKFLOW` drop-down, select `test`.
-
-5. From the left navigation menu, click `Step Test`.
-
-6. Provide values to the keys listed in the `Input variables` section. Check out the [configuration](#⚙️-configuration) section to learn about each key.
-
-7. Save the configuration. You can now see the configuration in the `bitrise.yml` file created in the cloned repository.
-
-8. Run the test using the following command:
+4. Visit the workflow editor that starts on `http://localhost:50154/1.3.87/#!/workflows` by default.
+5. On the workflow editor page, from the `WORKFLOW` drop-down, select `test`.
+6. From the left navigation menu, click `Step Test`.
+7. Provide values to the keys listed in the `Input variables` section. Check out the [configuration](#⚙️-configuration) section to learn about each key.
+8. Save the configuration. You can now see the configuration in the `bitrise.yml` file created in the cloned repository.
+9. Run the test using the following command:
   ```bash
   bitrise run test
   ```
-​
-​
-## Troubleshooting
-​
-If you get the **Build already exists** error, it is because you have more than one instance of the Step in your Workflow. This doesn't work as Bitrise sends the build slug to Firebase and having the Step more than once in the same Workflow results in sending the same build slug multiple times.
-​
-​
-</details>
 
-## �� Get started
-​
+
+## Troubleshooting
+
+If you get the **Build already exists** error, it is because you have more than one instance of the Step in your Workflow. This doesn't work as Bitrise sends the build slug to Firebase and having the Step more than once in the same Workflow results in sending the same build slug multiple times.
+
+## 🧩 Get started
+
 Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/steps-and-workflows/steps-and-workflows-index/).
-​
+
 You can also run this step directly with [Bitrise CLI](https://github.com/bitrise-io/bitrise).
-​
+
 ## ⚙️ Configuration
-​
+
 <details>
 <summary>Inputs</summary>
-​
+
 | Key | Description | Flags | Default |
 | --- | --- | --- | --- |
 | `app_apk_path` | Path of the app (.apk) file. | required | `$BITRISE_APK_PATH` |
@@ -85,15 +75,15 @@ You can also run this step directly with [Bitrise CLI](https://github.com/bitris
 | `use_mock_server` | Enable to mock a web server in your espresso tests to mock your API responses. Learn more. |  | `false` |
 | `check_build_status` | Wait for BrowserStack to complete the execution and get the test results  |  | `true` |
 | `api_params` |"New line separated variables, key and value seperated by `=` For example: `coverage=true` <br />`geoLocation=CN"` |  |  |
-​
+
 </details>
-​
+
 <details>
 <summary>Outputs</summary>
-​
+
 | Environment Variable | Description |
 | --- | --- |
-| `$BROWSERSTACK_BUILD_URL` |BrowserStack Dashboard URL for the executed build|
-| `$BROWSERSTACK_BUILD_STATUS`| Status of the executed build. Check out the [test results guide](https://www.browserstack.com/docs/app-automate/espresso/view-test-results) to learn about the available status  |
-​
+| `$BROWSERSTACK_BUILD_URL` |BrowserStack Dashboard url for the executed build|
+| `$BROWSERSTACK_BUILD_STATUS`| Status of the executed build. Check out the [test results guide](https://www.browserstack.com/docs/app-automate/espresso/view-test-results) to learn about available status  |
+
 </details>
