@@ -6,17 +6,18 @@ Run Espresso tests on BrowserStack
 <summary>Description</summary>
 ​
 Run your Espresso tests on BrowserStack App Automate. This step collects the built `.apk` file from `$BITRISE_APK_PATH` and test suite `.apk` file from `$BITRISE_TEST_APK_PATH` environment variables.
-​
+
 ## Configure the Step
 ​
 Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) on your machine.
-​
+
 Complete the following steps:
-​
-1. Clone the repository:
+
+​1. Clone the repository:
   ```bash
   git clone https://github.com/browserstack/browserstack-bitrise-espresso-step.git
   ```
+
 2. Open the cloned repository and create a `.bitrise.secrets.yml` file at the same level of bitrise.yml to add your BrowserStack Username and Access Key.
   An example `.bitrise.secrets.yml` file is as follows:
   ```yml
@@ -24,16 +25,22 @@ Complete the following steps:
       - A_SECRET_PARAM_ONE: the value for secret one
       - A_SECRET_PARAM_TWO: the value for secret two
   ```
+
 3. Go to the cloned repository and start the workflow editor:
   ```bash
   cd browserstack-bitrise-espresso-step
   bitrise :workflow-editor
   ```
   The workflow editor starts on `http://localhost:50154/1.3.87/#!/workflows`.
-4. On the workflow editor page, from the `WORKFLOW` drop down, select `test`.
+
+4. On the workflow editor page, from the `WORKFLOW` drop-down, select `test`.
+
 5. From the left navigation menu, click `Step Test`.
+
 6. Provide values to the keys listed in the `Input variables` section. Check out the [configuration](#⚙️-configuration) section to learn about each key.
+
 7. Save the configuration. You can now see the configuration in the `bitrise.yml` file created in the cloned repository.
+
 8. Run the test using the following command:
   ```bash
   bitrise run test
@@ -46,7 +53,7 @@ If you get the **Build already exists** error, it is because you have more than 
 ​
 ​
 </details>
-​
+
 ## �� Get started
 ​
 Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/steps-and-workflows/steps-and-workflows-index/).
