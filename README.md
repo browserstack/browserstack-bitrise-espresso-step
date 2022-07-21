@@ -1,5 +1,9 @@
 # BrowserStack App Automate - Espresso
 
+[![Step changelog](https://shields.io/github/v/release/bitrise-steplib/steps-virtual-device-testing-for-android?include_prereleases&label=changelog&color=blueviolet)](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases)
+
+# @rishabhe to update the link
+
 Run Espresso tests on BrowserStack
 
 <details>
@@ -9,40 +13,27 @@ Run your Espresso tests on BrowserStack App Automate. This step collects the bui
 
 ## Configure the Step
 
-Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) in your machine.
+Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) on your machine.
 
 Complete the following steps:
 
-1. Clone the repository:
-  ```bash
-  git clone https://github.com/browserstack/browserstack-bitrise-espresso-step.git
-  ```
-2. Open the cloned repository and create a `.bitrise.secrets.yml` file at the same level of bitrise.yml to add your BrowserStack Username and Access Key.
-  An example `.bitrise.secrets.yml` file is as follows:
-  ```yml
-    envs:
-      - A_SECRET_PARAM_ONE: the value for secret one
-      - A_SECRET_PARAM_TWO: the value for secret two
-  ```
-3. Go to the cloned repository and start the workflow editor:
-  ```bash
-  cd browserstack-bitrise-espresso-step
-  bitrise :workflow-editor
-  ```
-4. Visit the workflow editor that starts on `http://localhost:50154/1.3.87/#!/workflows` by default.
-5. On the workflow editor page, from the `WORKFLOW` drop-down, select `test`.
-6. From the left navigation menu, click `Step Test`.
-7. Provide values to the keys listed in the `Input variables` section. Check out the [configuration](#⚙️-configuration) section to learn about each key.
-8. Save the configuration. You can now see the configuration in the `bitrise.yml` file created in the cloned repository.
-9. Run the test using the following command:
-  ```bash
-  bitrise run test
-  ```
-
+1. Open the Workflow you want to use in the Workflow Editor.
+​
+2. Before adding this step, add the [Android Build for UI testing](https://www.bitrise.io/integrations/steps/android-build-for-ui-testing) Step to your Workflow & configure it.
+​
+4. Add the **BrowserStack App Automate - Espresso** step right after the **Android Build for UI testing** step.
+​
+5. Add your BrowserStack Username and Access Key in the **Authentication** step input.
+​
+6. For **App & Test Suite** step inputs, the **Android Build for UI Testing** step exports an APK and a test APK, and their paths get automatically set in the APK path and Test APK path input fields. If you are not using **Android Build for UI Testing** step, make sure the **App path** input points to the path of the APK or AAB file of your app and test suite.
+​
+7. Add one or more devices in the **Devices** step input.
+​
+8. Configure additional step inputs like **Debug logs** and **Test Configurations** and start your build.
 
 ## Troubleshooting
 
-If you get the **Build already exists** error, it is because you have more than one instance of the Step in your Workflow. This doesn't work as Bitrise sends the build slug to Firebase and having the Step more than once in the same Workflow results in sending the same build slug multiple times.
+TO-DO: @rishabh
 
 ## 🧩 Get started
 
