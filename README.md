@@ -1,7 +1,5 @@
 # BrowserStack App Automate - Espresso
 
-[![Step changelog](https://shields.io/github/v/release/bitrise-steplib/steps-virtual-device-testing-for-android?include_prereleases&label=changelog&color=blueviolet)](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases)
-
 ## 🧩 Get started
 
 Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows.html).
