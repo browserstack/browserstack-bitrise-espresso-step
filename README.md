@@ -31,6 +31,8 @@ Complete the following steps:
 ​
 8. Configure additional step inputs like **Debug logs** and **Test Configurations** and start your build.
 
+</details>
+
 ## Troubleshooting
 
 TO-DO: @rishabh
