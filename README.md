@@ -2,9 +2,15 @@
 
 [![Step changelog](https://shields.io/github/v/release/bitrise-steplib/steps-virtual-device-testing-for-android?include_prereleases&label=changelog&color=blueviolet)](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases)
 
-# @rishabhe to update the link
+## 🧩 Get started
 
-Run Espresso tests on BrowserStack
+Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows.html).
+
+OR
+
+You can also run this step directly with [Bitrise CLI]([https://github.com/bitrise-io/bitrise](https://github.com/bitrise-io/bitrise#bitrise-offline-cli)).
+
+## Run Espresso tests on BrowserStack
 
 <details>
 <summary>Description</summary>
@@ -32,16 +38,6 @@ Complete the following steps:
 8. Configure additional step inputs like **Debug logs** and **Test Configurations** and start your build.
 
 </details>
-
-## Troubleshooting
-
-TO-DO: @rishabh
-
-## 🧩 Get started
-
-Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/steps-and-workflows/steps-and-workflows-index/).
-
-You can also run this step directly with [Bitrise CLI](https://github.com/bitrise-io/bitrise).
 
 ## ⚙️ Configuration
 
@@ -80,3 +76,19 @@ You can also run this step directly with [Bitrise CLI](https://github.com/bitris
 | `$BROWSERSTACK_BUILD_STATUS`| Status of the executed build. Check out the [test results guide](https://www.browserstack.com/docs/app-automate/espresso/view-test-results) to learn about available status  |
 
 </details>
+
+## Troubleshooting
+
+For internall troubleshooting, we would recommend that you start from [here](https://devcenter.bitrise.io/en/builds/build-data-and-troubleshooting.html).
+
+If you are still unable to figure out the problem, please feel free to create an [issue](https://github.com/browserstack/browserstack-bitrise-espresso-step/issues), we will look into it ASAP.
+
+## Contribution Guidelines
+
+1. Fork this [repo](https://github.com/browserstack/browserstack-bitrise-espresso-step)
+2. Add your changes
+3. Test your changes
+4. Raise a PR against this [repo](https://github.com/browserstack/browserstack-bitrise-espresso-step)
+5. Work on comments, if any
+6. Once Approved by our maintainers, we will merge the PR
+7. We will mention your name when we publish our [release](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases) with your contribution. :slightly_smiling_face:
