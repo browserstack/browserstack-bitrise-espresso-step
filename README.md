@@ -77,7 +77,7 @@ Complete the following steps:
 
 ## Troubleshooting
 
-For internall troubleshooting, we would recommend that you start from [here](https://devcenter.bitrise.io/en/builds/build-data-and-troubleshooting.html).
+For internal troubleshooting, we would recommend that you start from [here](https://devcenter.bitrise.io/en/builds/build-data-and-troubleshooting.html).
 
 If you are still unable to figure out the problem, please feel free to create an [issue](https://github.com/browserstack/browserstack-bitrise-espresso-step/issues), we will look into it ASAP.
 
