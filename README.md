@@ -38,9 +38,9 @@ Complete the following steps to configure BrowserStack's step in your workflow:
 
 | Key | Description | Flags | Default |
 | --- | --- | --- | --- |
-| `app_apk_path` | Path of the app (.apk) file. | required | `$BITRISE_APK_PATH` |
-| `testsuite_apk_path` | Path of the test suite (.apk) file . | required | `$BITRISE_TEST_APK_PATH` |
-| `devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required | `Samsung Galaxy S9 Plus-9.0` |
+| `app_apk_path` | Path of the app (.apk) file. | required | N/A |
+| `testsuite_apk_path` | Path of the test suite (.apk) file . | required | N/A |
+| `devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required | N/A |
 | `instrumentation_logs` | Generate instrumentation logs of the test session  |  | `true` |
 | `network_logs` | Generate network logs of your Espresso test sessions to capture network traffic, latency, etc. |  | `false` |
 | `device_logs` | Generate device logs (Android logcat) |  | `false` |
