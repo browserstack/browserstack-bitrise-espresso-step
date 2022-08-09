@@ -4,10 +4,6 @@
 
 Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows.html).
 
-OR
-
-You can also run this step directly with [Bitrise CLI]([https://github.com/bitrise-io/bitrise](https://github.com/bitrise-io/bitrise#bitrise-offline-cli)).
-
 ## Run Espresso tests on BrowserStack
 
 <details>
@@ -17,9 +13,7 @@ Run your Espresso tests on BrowserStack App Automate. This step collects the bui
 
 ## Configure the Step
 
-Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) on your machine.
-
-Complete the following steps:
+Complete the following steps to configure BrowserStack's step in your workflow:
 
 1. Open the Workflow you want to use in the Workflow Editor.
 ​
@@ -44,9 +38,9 @@ Complete the following steps:
 
 | Key | Description | Flags | Default |
 | --- | --- | --- | --- |
-| `app_apk_path` | Path of the app (.apk) file. | required | `$BITRISE_APK_PATH` |
-| `testsuite_apk_path` | Path of the test suite (.apk) file . | required | `$BITRISE_TEST_APK_PATH` |
-| `devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required | `Samsung Galaxy S9 Plus-9.0` |
+| `app_apk_path` | Path of the app (.apk) file. | required | N/A |
+| `testsuite_apk_path` | Path of the test suite (.apk) file . | required | N/A |
+| `devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required | N/A |
 | `instrumentation_logs` | Generate instrumentation logs of the test session  |  | `true` |
 | `network_logs` | Generate network logs of your Espresso test sessions to capture network traffic, latency, etc. |  | `false` |
 | `device_logs` | Generate device logs (Android logcat) |  | `false` |
@@ -83,10 +77,11 @@ If you are still unable to figure out the problem, please feel free to create an
 
 ## Contribution Guidelines
 
-1. Fork this [repo](https://github.com/browserstack/browserstack-bitrise-espresso-step)
+1. Fork this [repository](https://github.com/browserstack/browserstack-bitrise-espresso-step)
 2. Add your changes
 3. Test your changes
-4. Raise a PR against this [repo](https://github.com/browserstack/browserstack-bitrise-espresso-step)
+4. Raise a PR against this [repository](https://github.com/browserstack/browserstack-bitrise-espresso-step)
 5. Work on comments, if any
-6. Once Approved by our maintainers, we will merge the PR
+6. Once approved by our maintainers, we will merge the PR.
 7. We will mention your name when we publish our [release](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases) with your contribution. :slightly_smiling_face:
+
