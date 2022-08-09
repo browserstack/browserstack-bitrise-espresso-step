@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/olekukonko/tablewriter"
 )
 
 func getDevices() ([]string, error) {
@@ -207,6 +209,7 @@ func printBuildStatus(build_details map[string]interface{}) {
 
 	devices := build_details["devices"].([]interface{})
 	build_id := build_details["id"]
+	data := [][]string{}
 
 	if len(devices) == 1 {
 		sessions := devices[0].(map[string]interface{})["sessions"].([]interface{})[0].(map[string]interface{})
@@ -219,15 +222,14 @@ func printBuildStatus(build_details map[string]interface{}) {
 		passed_test := session_test_status["passed"]
 		device_name := devices[0].(map[string]interface{})["device"].(string)
 
-		log.Print("Build Id                                            Devices                                            Status")
-		log.Println("")
-
 		if session_status == "passed" {
-			log.Printf("%s                %s                PASSED (%v/%v passed)", build_id, device_name, passed_test, total_test)
+			result := fmt.Sprintf("PASSED (%v/%v passed)", passed_test, total_test)
+			data = append(data, []string{build_id.(string), device_name, result})
 		}
 
 		if session_status == "failed" || session_status == "error" {
-			log.Printf("%s                %s                FAILED (%v/%v passed)", build_id, device_name, passed_test, total_test)
+			result := fmt.Sprintf("FAILED (%v/%v passed)", passed_test, total_test)
+			data = append(data, []string{build_id.(string), device_name, result})
 		}
 	} else {
 		for i := 0; i < len(devices); i++ {
@@ -241,14 +243,24 @@ func printBuildStatus(build_details map[string]interface{}) {
 			passed_test := session_test_status["passed"]
 			device_name := devices[i].(map[string]interface{})["device"].(string)
 
-			log.Print("Build Id                                            Devices                                            Status")
 			if session_status == "passed" {
-				log.Printf("%s                %s                PASSED (%v/%v passed)", build_id, device_name, passed_test, total_test)
+				result := fmt.Sprintf("PASSED (%v/%v passed)", passed_test, total_test)
+				data = append(data, []string{build_id.(string), device_name, result})
 			}
 
 			if session_status == "failed" || session_status == "error" {
-				log.Printf("%s                %s                FAILED (%v/%v passed)", build_id, device_name, passed_test, total_test)
+				result := fmt.Sprintf("FAILED (%v/%v passed)", passed_test, total_test)
+				data = append(data, []string{build_id.(string), device_name, result})
 			}
 		}
 	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Build Id", "Devices", "Status"})
+
+	for _, v := range data {
+		table.Append(v)
+	}
+
+	table.Render()
 }

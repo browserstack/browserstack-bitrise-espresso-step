@@ -84,3 +84,4 @@ If you are still unable to figure out the problem, please feel free to create an
 5. Work on comments, if any
 6. Once approved by our maintainers, we will merge the PR.
 7. We will mention your name when we publish our [release](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases) with your contribution. :slightly_smiling_face:
+

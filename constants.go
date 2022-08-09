@@ -14,7 +14,8 @@ const (
 	SAMPLE_BUILD_ID   = "56fec97937b22c785a6c5e08c13f629d505f5cd9"
 
 	UPLOAD_APP_ERROR         = "Failed to upload app on BrowserStack, error : %s"
-	FILE_NOT_AVAILABLE_ERROR = "Failed to upload test suite on BrowserStack, error: file not available"
+	AUT_NOT_FOUND            = "app_apk_path: couldn't find the app (.apk file). Please add `$BITRISE_APK_PATH` from `Android Build for UI Testing` step or the absolute path of the app (.apk file)"
+	TEST_SUITE_NOT_FOUND     = "testsuite_apk_path: couldn't find the test-suite (.apk file). Please add the `$BITRISE_TEST_APK_PATH` from `Android Build for UI Testing` step or the absolute path of the test-suite (.apk file)"
 	INVALID_FILE_TYPE_ERROR  = "Failed to upload test suite on BrowserStack, error: invalid file type"
 	BUILD_FAILED_ERROR       = "Failed to execute build on BrowserStack, error: %s"
 	FETCH_BUILD_STATUS_ERROR = "Failed to fetch test results, error: %s"
