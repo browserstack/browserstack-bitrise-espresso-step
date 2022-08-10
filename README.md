@@ -4,10 +4,6 @@
 
 Add this step directly to your workflow in the [Bitrise Workflow Editor](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows.html).
 
-OR
-
-You can also run this step directly with [Bitrise CLI]([https://github.com/bitrise-io/bitrise](https://github.com/bitrise-io/bitrise#bitrise-offline-cli)).
-
 ## Run Espresso tests on BrowserStack
 
 <details>
@@ -17,9 +13,7 @@ Run your Espresso tests on BrowserStack App Automate. This step collects the bui
 
 ## Configure the Step
 
-Before configuring this step, make sure you install [Bitrise CLI](https://github.com/bitrise-io/bitrise) on your machine.
-
-Complete the following steps:
+To add and configure the "BrowserStack App Automate - Espresso" step in Bitrise, complete the following steps:
 
 1. Open the Workflow you want to use in the Workflow Editor.
 ​
@@ -44,24 +38,24 @@ Complete the following steps:
 
 | Key | Description | Flags | Default |
 | --- | --- | --- | --- |
-| `app_apk_path` | Path of the app (.apk) file. | required | `$BITRISE_APK_PATH` |
-| `testsuite_apk_path` | Path of the test suite (.apk) file . | required | `$BITRISE_TEST_APK_PATH` |
-| `devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required | `Samsung Galaxy S9 Plus-9.0` |
+| `Android app under test` | Path of the app (.apk) file. | required | |
+| `Espresso test suite` | Path of the test suite (.apk) file . | required | |
+| `Devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required |  |
 | `instrumentation_logs` | Generate instrumentation logs of the test session  |  | `true` |
-| `network_logs` | Generate network logs of your Espresso test sessions to capture network traffic, latency, etc. |  | `false` |
-| `device_logs` | Generate device logs (Android logcat) |  | `false` |
-| `debug_screenshots` | Capture the screenshots of the test execution|  | `false` |
-| `video_recording` | Record video of the test execution  |  | `true` |
-| `project` | Project name of the tests |  |  |
-| `project_notify_url` | A callback URL to enable BrowserStack notify about completion of build under a given project.   |  |  |
-| `use_local` | Enable local testing to retrieve app data hosted on local/private servers  |  | `false` |
-| `use_test_sharding` | Enable test sharding to split tests cases into different groups instead of running them sequentially. <br />Add the sharding value json here. Examples: **Input for auto strategy**: <br /> ```{"numberOfShards": 2}, "devices": ["Google Pixel 3-9.0"]``` <br /> **Input for package strategy**:```{"numberOfShards": 2, "mapping": [{"name": "Shard 1", "strategy": "package", "values": ["com.foo.login", "com.foo.logout"]}, {"name": "Shard 2", "strategy": "package", "values": ["com.foo.dashboard"]}]}```  **Input for class strategy**: ```{"numberOfShards": 2, "mapping": [{"name": "Shard 1", "strategy": "class", "values": ["com.foo.login.user", "com.foo.login.admin"]}, {"name": "Shard 2", "strategy": "class", "values": ["com.foo.logout.user"]}]}```|  |  |
-| `clear_app_data` | Enable to clear app data after every test run|  | `false`  |
-| `filter_test` | "Key-value pairs of filters to run tests from supported test filtering strategies: class, package, annotation, size <br /> Examples: **For class filtering strategy**: `class com.android.foo.ClassA, class com.android.foo.ClassB,class com.android.foo.ClassC` <br /> **For package filtering strategy**: `package com.android.foo` <br /> **For annotation filtering strategy**: `size small`,`size medium`,`size large`  |  |  |
-| `use_single_runner_invocation` | Enable to run all tests in a single instrumentation process to reduce overall build time.  |  | `false`  |
-| `use_mock_server` | Enable to mock a web server in your espresso tests to mock your API responses. Learn more. |  | `false` |
-| `check_build_status` | Wait for BrowserStack to complete the execution and get the test results  |  | `true` |
-| `api_params` |"New line separated variables, key and value seperated by `=` For example: `coverage=true` <br />`geoLocation=CN"` |  |  |
+| `Network logs` | Generate network logs of your Espresso test sessions to capture network traffic, latency, etc. |  | `false` |
+| `Android logcat logs` | Generate device logs (Android logcat) |  | `false` |
+| `Capture Screenshots` | Capture the screenshots of the test execution|  | `false` |
+| `Video recording` | Record video of the test execution  |  | `true` |
+| `Project name` | Project name of the tests |  |  |
+| `Notify project status` | A callback URL to enable BrowserStack notify about completion of build under a given project.   |  |  |
+| `Local testing` | Enable local testing to retrieve app data hosted on local/private servers  |  | `false` |
+| `Test sharding` | Enable test sharding to split tests cases into different groups instead of running them sequentially. <br />Add the sharding value json here. Examples: **Input for auto strategy**: <br /> ```{"numberOfShards": 2}, "devices": ["Google Pixel 3-9.0"]``` <br /> **Input for package strategy**:```{"numberOfShards": 2, "mapping": [{"name": "Shard 1", "strategy": "package", "values": ["com.foo.login", "com.foo.logout"]}, {"name": "Shard 2", "strategy": "package", "values": ["com.foo.dashboard"]}]}```  **Input for class strategy**: ```{"numberOfShards": 2, "mapping": [{"name": "Shard 1", "strategy": "class", "values": ["com.foo.login.user", "com.foo.login.admin"]}, {"name": "Shard 2", "strategy": "class", "values": ["com.foo.logout.user"]}]}```|  |  |
+| `Clear app data` | Enable to clear app data after every test run|  | `false`  |
+| `Filter tests` | Key-value pairs of filters to run tests from supported test filtering strategies: class, package, annotation, size <br /> Examples: **For class filtering strategy**: `class com.android.foo.ClassA, class com.android.foo.ClassB,class com.android.foo.ClassC` <br /> **For package filtering strategy**: `package com.android.foo` <br /> **For annotation filtering strategy**: `size small`,`size medium`,`size large`  |  |  |
+| `Single runner invocation` | Enable to run all tests in a single instrumentation process to reduce overall build time.  |  | `false`  |
+| `Mock server` | Enable to mock a web server in your espresso tests to mock your API responses. Learn more. |  | `false` |
+| `Build Status` | Wait for BrowserStack to complete the execution and get the test results  |  | `true` |
+| `Test capabilities` |"New line separated variables, key and value seperated by `=` For example: `coverage=true` <br />`geoLocation=CN"` |  |  |
 
 </details>
 
@@ -83,10 +77,10 @@ If you are still unable to figure out the problem, please feel free to create an
 
 ## Contribution Guidelines
 
-1. Fork this [repo](https://github.com/browserstack/browserstack-bitrise-espresso-step)
+1. Fork this [repository](https://github.com/browserstack/browserstack-bitrise-espresso-step)
 2. Add your changes
 3. Test your changes
-4. Raise a PR against this [repo](https://github.com/browserstack/browserstack-bitrise-espresso-step)
+4. Raise a PR against this [repository](https://github.com/browserstack/browserstack-bitrise-espresso-step)
 5. Work on comments, if any
-6. Once Approved by our maintainers, we will merge the PR
+6. Once approved by our maintainers, we will merge the PR
 7. We will mention your name when we publish our [release](https://github.com/browserstack/browserstack-bitrise-espresso-step/releases) with your contribution. :slightly_smiling_face:
