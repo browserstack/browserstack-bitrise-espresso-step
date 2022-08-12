@@ -11,14 +11,14 @@ func TestBuild(t *testing.T) {
 	{
 		build, err := build("", SAMPLE_TEST_SUITE, "username", "password")
 		require.Equal(t, "", build)
-		require.Error(t, err, FILE_NOT_AVAILABLE_ERROR)
+		require.Error(t, err, AUT_NOT_FOUND)
 	}
 
 	t.Log("Build without test_suite_app path")
 	{
 		build, err := build(SAMPLE_APP, "", "", "")
 		require.Equal(t, "", build)
-		require.Error(t, err, FILE_NOT_AVAILABLE_ERROR)
+		require.Error(t, err, TEST_SUITE_NOT_FOUND)
 	}
 
 	t.Log("Build with invalid credentials")
