@@ -32,6 +32,7 @@ type BrowserStackPayload struct {
 	Size                   []string    `json:"size,omitempty"`
 	UseMockServer          bool        `json:"allowDeviceMockServer,omitempty"`
 	UseTestSharding        interface{} `json:"shards,omitempty"`
+	UseCoverage            bool        `json:"coverage,omitempty"`
 
 	// Apart from the inputs from UI, these are some more fields which we support.
 	// We've mentioned the type and the json key for these field.
@@ -53,4 +54,16 @@ type BrowserStackPayload struct {
 	// UploadMedia           []string `json:"UploadMedia,omitempty"`
 	// LocalIdentifier       string   `json:"localIdentifier,omitempty"`
 	// IdleTimeout           string   `json:"idleTimeout,omitempty"`
+}
+
+type Build struct {
+	Devices []Device `json:"devices"`
+}
+
+type Device struct {
+	Sessions []Session `json:"sessions"`
+}
+
+type Session struct {
+	Id string `json:"id"`
 }

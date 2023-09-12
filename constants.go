@@ -8,6 +8,8 @@ const (
 	APP_AUTOMATE_BUILD_ENDPOINT        = "/app-automate/espresso/v2/build"
 	APP_AUTOMATE_BUILD_STATUS_ENDPOINT = "/app-automate/espresso/v2/builds/"
 	APP_AUTOMATE_BUILD_DASHBOARD_URL   = "https://app-automate.browserstack.com/dashboard/v2/builds/"
+	APP_AUTOMATE_SESSIONS_PATH         = "/sessions/"
+	COVERAGE_FILE                      = "coverage.ec"
 
 	SAMPLE_APP        = "bs://b91841adbf33515fef7a1cca869a9526a86f9a0e"
 	SAMPLE_TEST_SUITE = "bs://535a0932c8a785384b8470ec6166e093cd3b2c5f"

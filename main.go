@@ -87,6 +87,16 @@ func main() {
 	if err != nil {
 		failf(err.Error())
 	}
+	
+	use_coverage, _ := strconv.ParseBool(os.Getenv("use_coverage"))
+	if use_coverage {
+		var coverage_report, err = getCoverageReport(build_id, username, access_key)
+		cmd_log_coverage_report, err_coverage_report := exec.Command("bitrise", "envman", "add", "--key", "BROWSERSTACK_COVERAGE_REPORT", "--value", coverage_report).CombinedOutput()
+
+		if err_coverage_report != nil {
+			fmt.Printf("Failed to expose coverage report with envman, error: %#v | output: %s", err, cmd_log_coverage_report)
+		}
+	}
 
 	cmd_log_build_id, err_build_id := exec.Command("bitrise", "envman", "add", "--key", "BROWSERSTACK_BUILD_URL", "--value", APP_AUTOMATE_BUILD_DASHBOARD_URL+build_parsed_response["build_id"].(string)).CombinedOutput()
 	cmd_log_build_status, err_build_status := exec.Command("bitrise", "envman", "add", "--key", "BROWSERSTACK_BUILD_STATUS", "--value", build_status).CombinedOutput()

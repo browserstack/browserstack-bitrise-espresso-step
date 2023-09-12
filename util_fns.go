@@ -114,6 +114,7 @@ func createBuildPayload() BrowserStackPayload {
 	clear_app_data, _ := strconv.ParseBool(os.Getenv("clear_app_data"))
 	use_single_runner_invocation, _ := strconv.ParseBool(os.Getenv("use_single_runner_invocation"))
 	use_mock_server, _ := strconv.ParseBool(os.Getenv("use_mock_server"))
+	use_coverage, _ := strconv.ParseBool(os.Getenv("use_coverage"))
 
 	sharding_data := TestSharding{}
 	if os.Getenv("use_test_sharding") != "" {
@@ -136,6 +137,7 @@ func createBuildPayload() BrowserStackPayload {
 		UseLocal:               use_local,
 		ClearAppData:           clear_app_data,
 		UseMockServer:          use_mock_server,
+		UseCoverage:            use_coverage,
 	}
 
 	getTestFilters(&payload)
