@@ -213,15 +213,27 @@ func checkBuildStatus(build_id string, username string, access_key string, waitF
 	}
 }
 
-func getCoverageReport(build_id string, username string, access_key string) (string, error) {
+func getCoverageReports(build_id string, username string, access_key string) (error) {
 
-	var sessionId, err = getFirstSessionId(build_id, username, access_key)
+	var sessionIds, err = getSessionIds(build_id, username, access_key)
 	if err != nil {
-		return "", err
+		return err
 	}
+    if err := os.Mkdir(COVERAGE_FOLDER, os.ModePerm); err != nil {
+		return err
+    }
+	for _, session := range sessionIds {
+        err = getCoverageReport(build_id, session, username, access_key)
+		if err != nil {
+			return err
+		}
+    }
+	return nil
+}
 
+func getCoverageReport(build_id string, sessionId string, username string, access_key string) (error) {
 	client := &http.Client{}
-	req, _ := http.NewRequest("GET", BROWSERSTACK_DOMAIN+APP_AUTOMATE_BUILD_STATUS_ENDPOINT+build_id+APP_AUTOMATE_SESSIONS_PATH+sessionId, nil)
+	req, _ := http.NewRequest("GET", BROWSERSTACK_DOMAIN+APP_AUTOMATE_BUILD_STATUS_ENDPOINT+build_id+APP_AUTOMATE_SESSIONS_PATH+sessionId+"/coverage", nil)
 
 	req.SetBasicAuth(username, access_key)
 
@@ -230,28 +242,32 @@ func getCoverageReport(build_id string, username string, access_key string) (str
 	res, err := client.Do(req)
 
 	if err != nil {
-		return "", fmt.Errorf(HTTP_ERROR, err)
+		return fmt.Errorf(HTTP_ERROR, err)
 	}
 
 	defer res.Body.Close()
 
 	// Create the file
-	out, err := os.Create(COVERAGE_FILE)
+	var filePath = COVERAGE_FOLDER+"/"+sessionId+"-coverage.ec"
+	out, err := os.Create(filePath)
 	if err != nil {
-		return "",fmt.Errorf(HTTP_ERROR, err)
+		return fmt.Errorf(HTTP_ERROR, err)
 	}
 	defer out.Close()
 
 	_, err = io.Copy(out, res.Body)
 
 	if err != nil {
-		return "", fmt.Errorf(HTTP_ERROR, err)
+		return fmt.Errorf(HTTP_ERROR, err)
 	}
-	return COVERAGE_FILE, nil
+	// Download all coverage files (may not be android), document the output variable
+	log.Println("Coverage file saved : ", filePath)
+	return nil
 }
 
-func getFirstSessionId(build_id string, username string, access_key string) (string, error) {
+func getSessionIds(build_id string, username string, access_key string) ([]string, error) {
 
+	var ids = make([]string, 0)
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", BROWSERSTACK_DOMAIN+APP_AUTOMATE_BUILD_STATUS_ENDPOINT+build_id, nil)
 
@@ -262,7 +278,7 @@ func getFirstSessionId(build_id string, username string, access_key string) (str
 	res, err := client.Do(req)
 
 	if err != nil {
-		return "", fmt.Errorf(HTTP_ERROR, err)
+		return ids, fmt.Errorf(HTTP_ERROR, err)
 	}
 
 	defer res.Body.Close()
@@ -270,18 +286,22 @@ func getFirstSessionId(build_id string, username string, access_key string) (str
 	body, err := ioutil.ReadAll(res.Body)
 
 	if err != nil {
-		return "", fmt.Errorf(HTTP_ERROR, err)
+		return ids, fmt.Errorf(HTTP_ERROR, err)
 	}
 
 	var buildResult Build
 	unmarshal_err := json.Unmarshal([]byte(body), &buildResult)
 
 	if unmarshal_err != nil {
-		return "", fmt.Errorf(HTTP_ERROR, err)
+		return ids, fmt.Errorf(HTTP_ERROR, err)
 	}
 
-	var id = buildResult.Devices[0].Sessions[0].Id
+	for _, device := range buildResult.Devices {
+		for _, session := range device.Sessions {
+			ids = append(ids, session.Id)
+		}
+	}
 
-	return id, nil
+	return ids, nil
 
 }

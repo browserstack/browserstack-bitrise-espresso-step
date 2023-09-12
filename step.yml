@@ -283,12 +283,12 @@ outputs:
       summary: Bs build status
       description: | 
         Status of the executed build. Check values [here:] (https://www.browserstack.com/docs/app-automate/espresso/view-test-results)
-  - BROWSERSTACK_COVERAGE_REPORT:
+  - BROWSERSTACK_COVERAGE_REPORTS:
     opts:
-      title: "BrowserStack Coverage Report"
-      summary: Bs coverage report
+      title: "BrowserStack Coverage Report Folder"
+      summary: Bs coverage report folder
       description: | 
-        Path to the coverage report downloaded from Browserstack when coverage is enabled
+        Path to the coverage report folder downloaded from Browserstack when coverage is enabled
 
 
 

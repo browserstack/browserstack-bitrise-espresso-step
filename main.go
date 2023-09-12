@@ -90,8 +90,11 @@ func main() {
 	
 	use_coverage, _ := strconv.ParseBool(os.Getenv("use_coverage"))
 	if use_coverage {
-		var coverage_report, err = getCoverageReport(build_id, username, access_key)
-		cmd_log_coverage_report, err_coverage_report := exec.Command("bitrise", "envman", "add", "--key", "BROWSERSTACK_COVERAGE_REPORT", "--value", coverage_report).CombinedOutput()
+		err = getCoverageReports(build_id, username, access_key)
+		if err != nil {
+			fmt.Printf("Failed to get coverage reports, error: %#v", err)
+		}
+		cmd_log_coverage_report, err_coverage_report := exec.Command("bitrise", "envman", "add", "--key", "BROWSERSTACK_COVERAGE_REPORTS", "--value", COVERAGE_FOLDER).CombinedOutput()
 
 		if err_coverage_report != nil {
 			fmt.Printf("Failed to expose coverage report with envman, error: %#v | output: %s", err, cmd_log_coverage_report)
