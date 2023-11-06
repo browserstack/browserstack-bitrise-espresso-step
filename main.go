@@ -87,7 +87,7 @@ func main() {
 	if err != nil {
 		failf(err.Error())
 	}
-	
+
 	use_coverage, _ := strconv.ParseBool(os.Getenv("use_coverage"))
 	if use_coverage {
 		err = getCoverageReports(build_id, username, access_key)

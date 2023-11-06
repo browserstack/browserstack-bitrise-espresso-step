@@ -213,25 +213,25 @@ func checkBuildStatus(build_id string, username string, access_key string, waitF
 	}
 }
 
-func getCoverageReports(build_id string, username string, access_key string) (error) {
+func getCoverageReports(build_id string, username string, access_key string) error {
 
 	var sessionIds, err = getSessionIds(build_id, username, access_key)
 	if err != nil {
 		return err
 	}
-    if err := os.Mkdir(COVERAGE_FOLDER, os.ModePerm); err != nil {
+	if err := os.Mkdir(COVERAGE_FOLDER, os.ModePerm); err != nil {
 		return err
-    }
+	}
 	for _, session := range sessionIds {
-        err = getCoverageReport(build_id, session, username, access_key)
+		err = getCoverageReport(build_id, session, username, access_key)
 		if err != nil {
 			return err
 		}
-    }
+	}
 	return nil
 }
 
-func getCoverageReport(build_id string, sessionId string, username string, access_key string) (error) {
+func getCoverageReport(build_id string, sessionId string, username string, access_key string) error {
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", BROWSERSTACK_DOMAIN+APP_AUTOMATE_BUILD_STATUS_ENDPOINT+build_id+APP_AUTOMATE_SESSIONS_PATH+sessionId+"/coverage", nil)
 
@@ -248,7 +248,7 @@ func getCoverageReport(build_id string, sessionId string, username string, acces
 	defer res.Body.Close()
 
 	// Create the file
-	var filePath = COVERAGE_FOLDER+"/"+sessionId+"-coverage.ec"
+	var filePath = COVERAGE_FOLDER + "/" + sessionId + "-coverage.ec"
 	out, err := os.Create(filePath)
 	if err != nil {
 		return fmt.Errorf(HTTP_ERROR, err)
