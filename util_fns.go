@@ -140,7 +140,7 @@ func createBuildPayload() BrowserStackPayload {
 
 	getTestFilters(&payload)
 
-	if len(sharding_data.Mapping) != 0 && sharding_data.NumberOfShards != 0 {
+	if sharding_data.NumberOfShards != 0 {
 		payload.UseTestSharding = sharding_data
 	}
 
