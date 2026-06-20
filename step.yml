@@ -260,6 +260,15 @@ inputs:
         - "true"
         - "false"
       category: "Test Configuration"
+  - use_coverage: "false"
+    opts:
+      title: "Coverage"
+      description: "Generate the code coverage report"
+      summary: "Generate the code coverage report for projects that have jacoco and test coverage enabled"
+      value_options: 
+        - "true"
+        - "false"
+      category: "Test Configuration"
       
 
 outputs:
@@ -274,6 +283,12 @@ outputs:
       summary: Bs build status
       description: | 
         Status of the executed build. Check values [here:] (https://www.browserstack.com/docs/app-automate/espresso/view-test-results)
+  - BROWSERSTACK_COVERAGE_REPORTS:
+    opts:
+      title: "BrowserStack Coverage Report Folder"
+      summary: Bs coverage report folder
+      description: | 
+        Path to the coverage report folder downloaded from Browserstack when coverage is enabled
 
 
 

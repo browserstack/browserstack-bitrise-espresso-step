@@ -66,6 +66,7 @@ To add and configure the "BrowserStack App Automate - Espresso" step in Bitrise,
 | --- | --- |
 | `$BROWSERSTACK_BUILD_URL` |BrowserStack Dashboard url for the executed build|
 | `$BROWSERSTACK_BUILD_STATUS`| Status of the executed build. Check out the [test results guide](https://www.browserstack.com/docs/app-automate/espresso/view-test-results) to learn about available status  |
+| `$BROWSERSTACK_COVERAGE_REPORTS`| Path to the coverage report downloaded from Browserstack when coverage is enabled |
 
 </details>
 
