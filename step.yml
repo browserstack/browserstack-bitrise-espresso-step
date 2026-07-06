@@ -140,6 +140,19 @@ inputs:
         - "true"
         - "false"
       category: "Debug logs"
+  - network_logs_options:
+    opts:
+      title: "Network logs options"
+      summary: "Refine network log capture as JSON. Supports captureContent to capture request/response bodies."
+      description: |
+        Provide network log options as JSON to refine what your network logs capture. This mirrors the `networkLogsOptions` capability used in local/IDE runs.
+
+        Currently supported:
+
+        `{"captureContent": true}` - capture the request and response content (bodies), in addition to metadata such as URLs, headers, latency and status codes.
+
+        Enabling this automatically enables **Network Logs** (it has no effect on its own).
+      category: "Debug logs"
   - device_logs: "false"
     opts:
       title: "Android logcat logs"

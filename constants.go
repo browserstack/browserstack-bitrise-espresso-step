@@ -20,4 +20,6 @@ const (
 	BUILD_FAILED_ERROR       = "Failed to execute build on BrowserStack, error: %s"
 	FETCH_BUILD_STATUS_ERROR = "Failed to fetch test results, error: %s"
 	HTTP_ERROR               = "Something went wrong while processing your request, error: %s"
+
+	NETWORK_LOGS_OPTIONS_INVALID = "Invalid network_logs_options. Expected JSON such as {\"captureContent\": true}. Error: %s"
 )
