@@ -103,6 +103,23 @@ func getTestFilters(payload *BrowserStackPayload) {
 	}
 }
 
+// parseNetworkLogsOptions parses the network_logs_options input, which mirrors
+// the App Automate `networkLogsOptions` capability (e.g. {"captureContent": true}).
+// An empty value means "not set". Invalid JSON is a hard, actionable error.
+func parseNetworkLogsOptions(raw string) (*NetworkLogsOptions, error) {
+	raw = strings.TrimSpace(raw)
+	if raw == "" {
+		return nil, nil
+	}
+
+	options := NetworkLogsOptions{}
+	if err := json.Unmarshal([]byte(raw), &options); err != nil {
+		return nil, fmt.Errorf(NETWORK_LOGS_OPTIONS_INVALID, err)
+	}
+
+	return &options, nil
+}
+
 // this util only picks data from env and map it to the struct
 func createBuildPayload() BrowserStackPayload {
 	instrumentation_logs, _ := strconv.ParseBool(os.Getenv("instrumentation_logs"))
@@ -114,6 +131,11 @@ func createBuildPayload() BrowserStackPayload {
 	clear_app_data, _ := strconv.ParseBool(os.Getenv("clear_app_data"))
 	use_single_runner_invocation, _ := strconv.ParseBool(os.Getenv("use_single_runner_invocation"))
 	use_mock_server, _ := strconv.ParseBool(os.Getenv("use_mock_server"))
+
+	network_logs_options, network_logs_options_err := parseNetworkLogsOptions(os.Getenv("network_logs_options"))
+	if network_logs_options_err != nil {
+		failf(network_logs_options_err.Error())
+	}
 
 	sharding_data := TestSharding{}
 	if os.Getenv("use_test_sharding") != "" {
@@ -136,6 +158,17 @@ func createBuildPayload() BrowserStackPayload {
 		UseLocal:               use_local,
 		ClearAppData:           clear_app_data,
 		UseMockServer:          use_mock_server,
+	}
+
+	// networkLogsOptions is only honoured by App Automate when networkLogs is
+	// also enabled, so enable it automatically when options are provided
+	// (avoids a backend "networkLogs not enabled" error).
+	if network_logs_options != nil {
+		if !network_logs {
+			log.Println("network_logs auto-enabled because network_logs_options was provided")
+		}
+		payload.NetworkLogs = true
+		payload.NetworkLogsOptions = network_logs_options
 	}
 
 	getTestFilters(&payload)

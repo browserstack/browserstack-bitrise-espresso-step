@@ -43,6 +43,7 @@ To add and configure the "BrowserStack App Automate - Espresso" step in Bitrise,
 | `Devices` | Name of one or more device-OS combination in new line. For example: <br /> `Samsung Galaxy S9 Plus-9.0` <br />`Google Pixel 3a-9.0` | required |  |
 | `instrumentation_logs` | Generate instrumentation logs of the test session  |  | `true` |
 | `Network logs` | Generate network logs of your Espresso test sessions to capture network traffic, latency, etc. |  | `false` |
+| `Network logs options` | Refine network log capture as JSON (mirrors the `networkLogsOptions` capability). Supports `{"captureContent": true}` to capture request/response bodies, not just metadata. Automatically enables **Network logs**. |  |  |
 | `Android logcat logs` | Generate device logs (Android logcat) |  | `false` |
 | `Capture Screenshots` | Capture the screenshots of the test execution|  | `false` |
 | `Video recording` | Record video of the test execution  |  | `true` |

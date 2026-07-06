@@ -12,26 +12,31 @@ type TestSharding struct {
 	AutoStrategyDevices []string      `json:"devices,omitempty"`
 }
 
+type NetworkLogsOptions struct {
+	CaptureContent bool `json:"captureContent"`
+}
+
 type BrowserStackPayload struct {
-	App                    string      `json:"app"`
-	TestSuite              string      `json:"testSuite"`
-	Devices                []string    `json:"devices"`
-	InstrumentationLogs    bool        `json:"instrumentationLogs"`
-	NetworkLogs            bool        `json:"networkLogs"`
-	DeviceLogs             bool        `json:"deviceLogs"`
-	DebugScreenshots       bool        `json:"debugscreenshots,omitempty"`
-	VideoRecording         bool        `json:"video"`
-	Project                string      `json:"project,omitempty"`
-	ProjectNotifyURL       string      `json:"projectNotifyURL,omitempty"`
-	UseLocal               bool        `json:"local,omitempty"`
-	ClearAppData           bool        `json:"clearPackageData,omitempty"`
-	SingleRunnerInvocation bool        `json:"singleRunnerInvocation,omitempty"`
-	Class                  []string    `json:"class,omitempty"`
-	Package                []string    `json:"package,omitempty"`
-	Annotation             []string    `json:"annotation,omitempty"`
-	Size                   []string    `json:"size,omitempty"`
-	UseMockServer          bool        `json:"allowDeviceMockServer,omitempty"`
-	UseTestSharding        interface{} `json:"shards,omitempty"`
+	App                    string              `json:"app"`
+	TestSuite              string              `json:"testSuite"`
+	Devices                []string            `json:"devices"`
+	InstrumentationLogs    bool                `json:"instrumentationLogs"`
+	NetworkLogs            bool                `json:"networkLogs"`
+	NetworkLogsOptions     *NetworkLogsOptions `json:"networkLogsOptions,omitempty"`
+	DeviceLogs             bool                `json:"deviceLogs"`
+	DebugScreenshots       bool                `json:"debugscreenshots,omitempty"`
+	VideoRecording         bool                `json:"video"`
+	Project                string              `json:"project,omitempty"`
+	ProjectNotifyURL       string              `json:"projectNotifyURL,omitempty"`
+	UseLocal               bool                `json:"local,omitempty"`
+	ClearAppData           bool                `json:"clearPackageData,omitempty"`
+	SingleRunnerInvocation bool                `json:"singleRunnerInvocation,omitempty"`
+	Class                  []string            `json:"class,omitempty"`
+	Package                []string            `json:"package,omitempty"`
+	Annotation             []string            `json:"annotation,omitempty"`
+	Size                   []string            `json:"size,omitempty"`
+	UseMockServer          bool                `json:"allowDeviceMockServer,omitempty"`
+	UseTestSharding        interface{}         `json:"shards,omitempty"`
 
 	// Apart from the inputs from UI, these are some more fields which we support.
 	// We've mentioned the type and the json key for these field.
