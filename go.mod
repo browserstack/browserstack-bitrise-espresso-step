@@ -1,6 +1,6 @@
 module github.com/browserstack/browserstack-bitrise-espresso-step
 
-go 1.26.10
+go 1.27.3
 
 require (
 	github.com/olekukonko/tablewriter v0.0.5
