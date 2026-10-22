@@ -134,7 +134,7 @@ func createBuildPayload() BrowserStackPayload {
 
 	network_logs_options, network_logs_options_err := parseNetworkLogsOptions(os.Getenv("network_logs_options"))
 	if network_logs_options_err != nil {
-		failf(network_logs_options_err.Error())
+		failf("%s", network_logs_options_err.Error())
 	}
 
 	sharding_data := TestSharding{}
